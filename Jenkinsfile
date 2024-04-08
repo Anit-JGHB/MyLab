@@ -32,17 +32,17 @@ pipeline{
     stage ('Publish to Nexus'){
         steps {
             nexusArtifactUploader artifacts:
-            [[artifactId: '${ArtifactId}', 
+            [[artifactId: "${ArtifactId}", 
             classifier: '', 
             file: 'target/AnitDevOpsLab-0.0.4-SNAPSHOT.war',
             type: 'war']],
             credentialsId: '61f10800-a30c-4b4f-a507-be8e393a7b06',
-            groupId: '${GroupId}',
+            groupId: "${GroupId}",
             nexusUrl: '172.20.10.193:8081',
             nexusVersion: 'nexus3',
             protocol: 'http', 
             repository: 'AnitDevOpsLab-SNAPSHOT', 
-            version: '${Version}'
+            version: "${Version}"
         }
     }
 
