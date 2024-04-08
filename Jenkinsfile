@@ -31,7 +31,8 @@ pipeline{
     // Stage 3: Publish the artificate to nexus
     stage ('Publish to Nexus'){
         steps {
-            nexusArtifactUploader artifacts: [[artifactId: '${ArtifactId}', 
+            nexusArtifactUploader artifacts:
+            [[artifactId: '${ArtifactId}', 
             classifier: '', 
             file: 'target/AnitDevOpsLab-0.0.4-SNAPSHOT.war',
             type: 'war']],
