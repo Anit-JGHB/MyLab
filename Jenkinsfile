@@ -31,6 +31,9 @@ pipeline{
     // Stage 3: Publish the artificate to nexus
     stage ('Publish to Nexus'){
         steps {
+            script {
+                def NexusRepo = Version.endsWith("SNAPSHOT") ? "AnitDevOpsLab-SNAPSHOT" : "AnitDevOpsLab-RELEASE"
+        
             nexusArtifactUploader artifacts:
             [[artifactId: "${ArtifactId}", 
             classifier: '', 
@@ -41,9 +44,10 @@ pipeline{
             nexusUrl: '172.20.10.193:8081',
             nexusVersion: 'nexus3',
             protocol: 'http', 
-            repository: 'AnitDevOpsLab-SNAPSHOT', 
+            repository: "${NexusRepo}", 
             version: "${Version}"
         }
+    }
     }
 
     //Stage 4 : Print Env vars 
