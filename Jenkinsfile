@@ -37,7 +37,7 @@ pipeline{
             nexusArtifactUploader artifacts:
             [[artifactId: "${ArtifactId}", 
             classifier: '', 
-            file: 'target/AnitDevOpsLab-0.0.4-SNAPSHOT.war',
+            file: "target/${ArtifactId}.${Version}.war",
             type: 'war']],
             credentialsId: '61f10800-a30c-4b4f-a507-be8e393a7b06',
             groupId: "${GroupId}",
